@@ -37,7 +37,7 @@ jobs:
         with:
           java-version: 11
       - name: Install Graphviz
-        run: cinst graphviz
+        run: cinst graphviz -r
       - name: Install BPNM-JS
         run: npm install -g bpmn-js-cmd
       - name: Install Mermaid
@@ -54,10 +54,10 @@ jobs:
       - name: Install Wavedrom
         run: npm install -g wavedrom-cli
       - name: Install ImageMagick
-        run: cinst imagemagick
+        run: cinst imagemagick -r
       - name: Install Gnuplot
         run: |
-          cinst gnuplot
+          cinst gnuplot -r
           echo "C:\Program Files\gnuplot\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: Install UMLet
         run: |
