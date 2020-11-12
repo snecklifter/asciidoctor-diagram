@@ -38,8 +38,6 @@ jobs:
           java-version: 11
       - name: Install Graphviz
         run: cinst graphviz
-      - name: Install Lilypond
-        run: sudo apt-get install -qq lilypond
       - name: Install BPNM-JS
         run: npm install -g bpmn-js-cmd
       - name: Install Mermaid
