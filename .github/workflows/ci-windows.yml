@@ -1,0 +1,70 @@
+name: Windows unit tests
+on:
+  push:
+    branches: ['**']
+    tags-ignore: ['**']
+  pull_request:
+  schedule:
+    - cron: '0 2 * * *'
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        ruby: [2.5, 2.6, 2.7, jruby, truffleruby]
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install Ruby Dependencies
+        run: bundle install --path vendor/bundle --jobs=3 --retry=3
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Install Graphviz
+        run: cinst graphviz
+      - name: Install Lilypond
+        run: sudo apt-get install -qq lilypond
+      - name: Install BPNM-JS
+        run: npm install -g bpmn-js-cmd
+      - name: Install Mermaid
+        run: npm install -g @mermaid-js/mermaid-cli
+      - name: Install NomNoml
+        run: npm install -g nomnoml
+      - name: Install StateMachineCat
+        run: npm install -g state-machine-cat
+      - name: Install Vega
+        run: |
+          npm install -g vega-cli
+          npm install -g install-peerdeps
+          install-peerdeps -g vega-lite
+      - name: Install Wavedrom
+        run: npm install -g wavedrom-cli
+      - name: Install ImageMagick
+        run: cinst imagemagick.tool
+      - name: Install Gnuplot
+        run: |
+          cinst gnuplot
+          echo "C:\Program Files\gnuplot\bin" >> $GITHUB_PATH
+      - name: Install UMLet
+        run: |
+          curl -s -O http://www.umlet.com/umlet_14_2/umlet-standalone-14.2.zip
+          7z x umlet-standalone-14.2.zip
+          echo "$PWD/Umlet" >> $GITHUB_PATH
+      - name: Run tests
+        run: bundle exec rake test
