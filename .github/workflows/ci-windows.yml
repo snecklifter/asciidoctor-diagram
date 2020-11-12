@@ -54,7 +54,7 @@ jobs:
       - name: Install Wavedrom
         run: npm install -g wavedrom-cli
       - name: Install ImageMagick
-        run: cinst imagemagick.tool
+        run: cinst imagemagick
       - name: Install Gnuplot
         run: |
           cinst gnuplot
