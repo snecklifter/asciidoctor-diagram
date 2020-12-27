@@ -22,7 +22,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         env:
-          ImageOS: windows19
+          ImageOS: win19
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Install Ruby Dependencies
