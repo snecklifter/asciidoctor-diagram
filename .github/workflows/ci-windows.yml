@@ -15,14 +15,14 @@ jobs:
         ruby: [2.5]
     runs-on: self-hosted
     steps:
-      - name: Setup Environment
-        run: echo "ImageOS=windows19" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Node
         uses: actions/setup-node@v1
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
+        env:
+          ImageOS: windows19
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Install Ruby Dependencies
