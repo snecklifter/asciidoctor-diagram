@@ -45,7 +45,8 @@ jobs:
       - name: Install Graphviz
         run: |
           cinst graphviz -r -y --no-progress
-          dot -c
+          Rename-Item C:\ProgramData\chocolatey\bin\dot.exe -NewName "dotold.exe" 
+          # dot -c
       - name: Install BPNM-JS
         run: npm install -g bpmn-js-cmd
       - name: Install Mermaid
