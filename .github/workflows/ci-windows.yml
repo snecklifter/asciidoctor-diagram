@@ -65,6 +65,7 @@ jobs:
           echo "C:\Program Files\ImageMagick-7.0.10-Q16-HDRI" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: Install Gnuplot
         run: |
+          cuninst gnuplot -r -y
           cinst gnuplot -r -y --no-progress --version=5.2.8
           echo "C:\Program Files\gnuplot\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: Install UMLet
