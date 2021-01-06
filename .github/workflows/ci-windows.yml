@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows]
-        ruby: [2.5]
+        ruby: [2.7]
     runs-on: self-hosted
     # Self-hosted needs:
     # - 7z installing and adding to path
