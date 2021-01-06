@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 
 code = <<-eos
+set term wxt
 plot [0:5][0:20] x**2 title 'O(n^2)'
 eos
 
