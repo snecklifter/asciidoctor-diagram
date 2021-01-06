@@ -68,11 +68,8 @@ jobs:
           cuninst gnuplot -r -y
           cinst gnuplot -r -y --no-progress
           echo "C:\Program Files\gnuplot\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          Set-Content -Path $env:APPDATA\gnuplot.ini -Value 'set term wxt'
       - name: Set gnuplot terminal type to wxt
-        uses: finnp/create-file-action@master
-        env:
-          FILE_NAME: "%APPDATA%/gnuplot.ini"
-          FILE_DATA: "set term wxt"
       - name: Install UMLet
         run: |
           Invoke-WebRequest -Uri "http://www.umlet.com/umlet_14_2/umlet-standalone-14.2.zip" -OutFile umlet.zip
