@@ -43,7 +43,9 @@ jobs:
         with:
           java-version: 11
       - name: Install Graphviz
-        run: cinst graphviz -r -y --no-progress
+        run: |
+          cinst graphviz -r -y --no-progress
+          dot -c
       - name: Install BPNM-JS
         run: npm install -g bpmn-js-cmd
       - name: Install Mermaid
@@ -59,8 +61,6 @@ jobs:
           install-peerdeps -g vega-lite
       - name: Install Wavedrom
         run: npm install -g wavedrom-cli
-      - name: Install PlantUML
-        run: cinst plantuml -r -y --no-progress
       - name: Install ImageMagick
         run: |
           cinst imagemagick -r -y --no-progress
