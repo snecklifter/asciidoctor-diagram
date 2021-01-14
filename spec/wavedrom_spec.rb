@@ -8,10 +8,10 @@ code = <<-eos
 ]}
 eos
 
-describe Asciidoctor::Diagram::WavedromBlockMacroProcessor, :broken_on_windows do
+describe Asciidoctor::Diagram::WavedromBlockMacroProcessor do
   include_examples "block_macro", :wavedrom, code, [:png, :svg]
 end
 
-describe Asciidoctor::Diagram::WavedromBlockProcessor, :broken_on_windows do
+describe Asciidoctor::Diagram::WavedromBlockProcessor do
   include_examples "block", :wavedrom, code, [:png, :svg]
 end
